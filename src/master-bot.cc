@@ -162,7 +162,7 @@ void Master::command (int argc, char **argv, int src_fd){
 
 		}else if(strcmp(argv[0],"res-show") == 0){
 			stringstream sstm;
-	
+
 			res_wait_--;
 			sstm << argv[1] << ":[";
 			for(int i=2; i<argc-1; ++i)
@@ -174,7 +174,7 @@ void Master::command (int argc, char **argv, int src_fd){
 			return;
 		}else if(strcmp(argv[0],"res-rd") == 0){
 			stringstream sstm;
-			
+		
 			res_wait_--;
 			sstm << "[" << argv[1] << "] ";
 			for(int i=2; i<argc-1; ++i){

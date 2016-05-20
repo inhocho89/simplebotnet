@@ -2,6 +2,7 @@
 #include "bot.h"
 #include <string.h>
 #include <sstream>
+#include <pthread.h>
 
 namespace utility
 {
@@ -88,7 +89,9 @@ namespace utility
 				new_buffer = (char *)malloc(n+1);
 				strcpy(new_buffer,cmd);
 				parseCmd (new_buffer, argc, argv);
+				pthread_mutex_lock(&bot->cmd_lock);
 				bot->command(argc, argv, sockfd);
+				pthread_mutex_unlock(&bot->cmd_lock);
 				free(new_buffer);
 				free(argv);
 				cmd += n+1;
